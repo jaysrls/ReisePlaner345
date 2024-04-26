@@ -1,0 +1,9 @@
+li{
+    background-color: #9776f1;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3px;
+    width: 50%;
+}

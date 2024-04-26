@@ -1,19 +1,21 @@
 import { FormData } from '../types';
 import './formPage.css'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 type formProps = {
     onSave: (formData: FormData) => void
 }
 
 export default function FormPage(props: formProps) {
-    const [formData, setFormData] = useState({
+    const [formData, setFormData] = useState<FormData>({
         Geschlecht: '',
-        'Anzahl Ferientage': '',
-        'Hygiene Level': 5,
+        Ferientage: 0,
+        'Hygiene Level': 4,
         Transportmittel: '',
         Unterkunftsart: '',
-        'Eigene spezifische Artikel': ''
+        'Eigene spezifische Artikel': '',
+        Jahreszeit: '',
+        Reiseart: '',
     });
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -21,13 +23,17 @@ export default function FormPage(props: formProps) {
         props.onSave(formData);
         setFormData({
             Geschlecht: '',
-            'Anzahl Ferientage': '',
-            'Hygiene Level': 5,
+            Ferientage: 0,
+            'Hygiene Level': 4,
             Transportmittel: '',
             Unterkunftsart: '',
-            'Eigene spezifische Artikel': ''
+            'Eigene spezifische Artikel': '',
+            Jahreszeit: '',
+            Reiseart: '', 
         });
     };
+    useEffect(() => {
+    }, [formData])
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setFormData(prevData => ({
@@ -47,13 +53,13 @@ export default function FormPage(props: formProps) {
                 <option value="Weiblich">Weiblich</option>
             </select>
 
-            <label htmlFor="AnzahlFerientage">
+            <label htmlFor="Ferientage">
                 Anzahl Ferientage:
             </label>
-            <input id="AnzahlFerientage" name="Anzahl Ferientage" type="number" value={formData['Anzahl Ferientage']} onChange={handleInputChange} />
+            <input id="Ferientage" name="Ferientage" type="number" value={formData.Ferientage} onChange={handleInputChange} />
 
             <label htmlFor="HygieneLevel">
-                Hygiene Level: {formData['Hygiene Level']}
+                Hygiene Level für deine Reise: {formData['Hygiene Level']}
             </label>
             <input id="HygieneLevel" name="Hygiene Level" type="range" min="1" max="5" value={formData['Hygiene Level']} onChange={handleInputChange} />
 
@@ -76,12 +82,27 @@ export default function FormPage(props: formProps) {
                 <option value="Hotel">Hotel</option>
                 <option value="Zelt/Camper">Zelt/Camper</option>
             </select>
-
-            <label htmlFor="EigeneSpezifischeArtikel">
-                Eigene spezifische Artikel:
+            <label htmlFor="Jahreszeit">
+                Klima
             </label>
-            <textarea id="EigeneSpezifischeArtikel" name="Eigene spezifische Artikel" value={formData['Eigene spezifische Artikel']} onChange={handleInputChange} />
-
+            <select id="Jahreszeit" name="Jahreszeit" value={formData.Jahreszeit} onChange={handleInputChange}>
+                <option value="">Bitte auswählen</option>
+                <option value="Frühling">10-20 c°</option>
+                <option value="Sommer">20-40 c°</option>
+                <option value="Herbst">5-15 c°</option>
+                <option value="Winter">-10-10 c°</option>
+            </select>
+            <label htmlFor="Reiseart">
+                Reiseart:
+            </label>
+            <select id="Reiseart" name="Reiseart" value={formData.Reiseart} onChange={handleInputChange}>
+                <option value="">Bitte auswählen</option>
+                <option value="Wanderferien">Wanderferien</option>
+                <option value="Strand/Poolferien">Strand/Poolferien</option>
+                <option value="Wintersportferien">Wintersportferien</option>
+                <option value="Stadtferien">Stadtferien</option>
+            </select>
+            
             <button type="submit">Speichern</button>
         </form>
 
