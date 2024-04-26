@@ -15,7 +15,47 @@ function App() {
     Jahreszeit: '',
     Reiseart: '',
   });
-  const [packlist, setPacklist] = useState<packList>();
+  const [packlist, setPacklist] = useState<packList>({
+    'Underwear': 0,
+    'Socks': 0,
+    'T-Shirts': 0,
+    'Sweatshirts': 0,
+    'Pants': 0,
+    'Shorts': 0,
+    'Bug Spray': 0,
+    'Hats': 0,
+    'Caps': 0,
+    'Shoes Light': 0,
+    'Shoes Heavy': 0,
+    'Gas Cooker': 0,
+    'Food Help': 0,
+    'Sleeping Bag': 0,
+    'Toothbrush': 0,
+    'Toothpaste': 0,
+    'Soap': 0,
+    'Deodorant': 0,
+    'Shaver': 0,
+    'Shaving Creme': 0,
+    'Towel': 0,
+    'Shampoo': 0,
+    'Hand Creme': 0,
+    'Lip Balm': 0,
+    'Perfume': 0,
+    'Nail Clippers': 0,
+    'Cotton Swabs': 0,
+    'Cleanser': 0,
+    'Moisturizer': 0,
+    'Face Cream': 0,
+    'Hiking Shoes': 0,
+    'Bathing Pants': 0,
+    'Skis': 0,
+    'Ski Boots': 0,
+    'Ski Jacket': 0,
+    'Bras': 0,
+    'Book Bags': 0,
+    'Suitcases': 0,
+    'Small Bags': 0
+  });
   const formHandler = (formdata: FormData) => {
     setFormData(formdata)
   }
