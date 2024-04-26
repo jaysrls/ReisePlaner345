@@ -28,5 +28,6 @@
     margin-left: 1%;
     width: 64%;
     display: flex;
-
+    justify-content: center;
+    align-items: center;
 }
